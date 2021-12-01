@@ -65,7 +65,7 @@ const editorProps = {
 function App() {
   const [state, setState] = useState({
     value: defaultValue,
-    textArea: "Hello world",
+    textArea: "Example non-matching line\n\nfunction foobar(x, props, y)\n{\n\talert('hello world');\n}",
   });
 
   const onChange = (newValue) => {
@@ -129,6 +129,7 @@ function App() {
           </div>
           <textarea
             id="textAreaRegex"
+            spellCheck={false}
             value={state.textArea}
             onChange={onTextAreaChange}>
           </textarea>
