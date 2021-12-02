@@ -111,6 +111,60 @@ function App() {
           value={state.value}
           {...editorProps}
         />
+        <table className="tg" style={{color: "white", backgroundColor: "rgb(39, 40, 34)"}}>
+        <thead>
+        <tr style={{color: "white", backgroundColor: "rgb(39, 40, 34)"}}>
+            <th className="tg-0pky" style={{color: "white", backgroundColor: "rgb(39, 40, 34)"}}>{'Token'}</th>
+            <th className="tg-0pky" style={{color: "white", backgroundColor: "rgb(39, 40, 34)"}}>{'Matches'}</th>
+            <th className="tg-0pky" style={{color: "white", backgroundColor: "rgb(39, 40, 34)"}}>{'Query'}</th>
+            <th className="tg-0pky" style={{color: "white", backgroundColor: "rgb(39, 40, 34)"}}>{'Example Match'}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td className="tg-0pky">{'$a'}</td>
+            <td className="tg-0pky">{'variable'}</td>
+            <td className="tg-0pky"><span style={{color: "white", backgroundColor: "rgb(39, 40, 34)"}}>{`if ($a == $b) return { $a; }`}</span></td>
+            <td className="tg-0pky"><span style={{color: "white", backgroundColor: "rgb(39, 40, 34)"}}>{`if (foo == bar) { return foo; }`}</span></td>
+        </tr>
+        <tr>
+            <td className="tg-0pky">{'$1'}</td>
+            <td className="tg-0pky">{'literal'}</td>
+            <td className="tg-0pky"><span style={{color: "white", backgroundColor: "rgb(39, 40, 34)"}}>{`$1 + $2 + $1 + $2`}</span></td>
+            <td className="tg-0pky"><span style={{color: "white", backgroundColor: "rgb(39, 40, 34)"}}>{`5 + "four" + 5 + "four"`}</span></td>
+        </tr>
+        <tr>
+            <td className="tg-0pky">{'$@op'}</td>
+            <td className="tg-0pky">{'operator'}</td>
+            <td className="tg-0pky"><span style={{color: "white", backgroundColor: "rgb(39, 40, 34)"}}>{`5 $@ops1 10 $@ 15 $@ops1 33`}</span></td>
+            <td className="tg-0pky"><span style={{color: "white", backgroundColor: "rgb(39, 40, 34)"}}>{`5 * 10 + 15 * 33`}</span></td>
+        </tr>
+        <tr>
+            <td className="tg-0pky">{'$#key'}</td>
+            <td className="tg-0pky">{'keyword'}</td>
+            <td className="tg-0pky"><span style={{color: "white", backgroundColor: "rgb(39, 40, 34)"}}>{`$# ($a == true)`}</span></td>
+            <td className="tg-0pky"><span style={{color: "white", backgroundColor: "rgb(39, 40, 34)"}}>{`do (baz == true)`}</span></td>
+        </tr>
+        <tr>
+            <td className="tg-0pky">{'$$'}</td>
+            <td className="tg-0pky">{'non-greedy any'}</td>
+            <td className="tg-0pky"><span style={{color: "white", backgroundColor: "rgb(39, 40, 34)"}}>{`if ($a $$ $a) { $$ return 3; }`}</span></td>
+            <td className="tg-0pky"><span style={{color: "white", backgroundColor: "rgb(39, 40, 34)"}}>{`if (foo, bar, foo) { gt(); return 3; }`}</span></td>
+        </tr>
+        <tr>
+            <td className="tg-0pky">{'$$$'}</td>
+            <td className="tg-0pky">{'greedy any'}</td>
+            <td className="tg-0pky"><span style={{color: "white", backgroundColor: "rgb(39, 40, 34)"}}>{`case $1: $$$ case $2: throw;`}</span></td>
+            <td className="tg-0pky"><span style={{color: "white", backgroundColor: "rgb(39, 40, 34)"}}>{`case "Apples": return 1; case "Bananas": throw; case "Mangos": throw;`}</span></td>
+        </tr>
+        <tr>
+            <td className="tg-0pky">{'REGEX(...)'}</td>
+            <td className="tg-0pky">{'regex escape hatch'}</td>
+            <td className="tg-0pky"><span style={{color: "white", backgroundColor: "rgb(39, 40, 34)"}}>{`REGEX(3+9+2*) 5 + 5`}</span></td>
+            <td className="tg-0pky"><span style={{color: "white", backgroundColor: "rgb(39, 40, 34)"}}>{`33922225+5`}</span></td>
+        </tr>
+        </tbody>
+        </table>
       </div>
       <div className="column">
         <h2 style={{color: "white"}}>Compiled Regex</h2>
